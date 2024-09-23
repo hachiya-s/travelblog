@@ -23,27 +23,22 @@ li {
 */
 .wrapper {
   max-width: 1200px;
-  padding: 0 16px;
+  /* padding: 0 16px; */
   margin: 0 auto;
 }
 .readmore {
   font-size: 0.875rem;
   text-align: center;
+  border-bottom: #8d8c8c;
+  padding-top: 12px;
 }
-/*
-疑似要素で下線を設定するために、「position: relative;」を設定
-*/
+
 .readmore a {
   padding-bottom: 1px;
   color: #333;
   position: relative;
 }
-/*
-「position: absolute;」を設定し、left、bottomで下線の位置を調整
-widthとheightで線の長さと高さを設定
-疑似要素で線を表示させるためには、「content: '';」を設定すること
-「transition: all 200ms ease;」でホバー時の速度などを設定
-*/
+
 .readmore a::after {
   content: "";
   position: absolute;
@@ -54,12 +49,7 @@ widthとheightで線の長さと高さを設定
   background: #333;
   transition: all 200ms ease;
 }
-/*
-ホバー時の下線の設定
-「opacity: 0;」下線を非表示
-「transform: translateY(3px);」下に3px移動
-→下に3px移動しながら下線を非表示にする
-*/
+
 .readmore a:hover::after {
   opacity: 0;
   transform: translateY(3px);
@@ -68,16 +58,14 @@ widthとheightで線の長さと高さを設定
 /*-------------------------------------------
 header
 -------------------------------------------*/
-/*
-「position: fixed;」でヘッダーを固定し、「z-index: 10;」で前面に表示
-※他のコンテンツでpositionをrelative、absolute、fixedのいずれかに
-設定している場合は、z-indexの数値が大きい方が前面に表示される
-*/
+
 #header {
   width: 100%;
   background-color: #fff;
   position: fixed;
   z-index: 10;
+  top: 0;
+  left: 0;
 }
 #header .site-title {
   padding: 20px 16px;
@@ -148,8 +136,8 @@ main ul {
   margin-bottom: 10px;
 }
 main li {
+  text-align: left;
   font-size: 0.875rem;
-  margin-right: 20px;
 }
 main .text {
   padding: 10px 40px 30px 40px;
@@ -221,6 +209,7 @@ footer
   padding-bottom: 50px;
 }
 #footer .item {
+  display: block;
   width: 30%;
 }
 #footer .footer-title {
@@ -229,7 +218,7 @@ footer
   margin-bottom: 30px;
 }
 #footer ul.about-list {
-  margin: 20px 0;
+  padding-left: 0;
 }
 #footer ul.about-list li {
   margin-bottom: 5px;
@@ -240,10 +229,7 @@ footer
   padding-left: 12px;
   color: #333;
 }
-/*p
-疑似要素で三角矢印を表示
-border～プロパティで三角を作り、positionで位置調整
-*/
+
 #footer ul.about-list .arrow::before {
   content: "";
   width: 0;
@@ -256,11 +242,17 @@ border～プロパティで三角を作り、positionで位置調整
   left: 0;
   margin-top: -6px;
 }
-#footer .menu-list {
-  border-bottom: solid 1px #777;
+
+#footer ul.menu-list {
+  padding-left: 0;
 }
-#footer .menu-list > li {
+
+#footer .menu-list li:first-child {
   border-top: solid 1px #777;
+}
+
+#footer .menu-list > li {
+  border-bottom: solid 1px #777;
   padding: 15px;
   text-align: left;
 }
